@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MovieApp</string>
+    <string name="log">Sign up</string>
+    <string name="Login">log in</string>
 </resources>
