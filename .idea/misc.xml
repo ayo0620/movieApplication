@@ -6,8 +6,16 @@
         <entry key="..\:/Users/aayom/AndroidStudioProjects/MovieApp/app/src/main/res/drawable/circle.xml" value="0.4185" />
         <entry key="..\:/Users/aayom/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_main.xml" value="0.5359375" />
         <entry key="..\:/Users/aayom/AndroidStudioProjects/MovieApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.5359375" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/drawable/ic_explore_icon.xml" value="0.1" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/drawable/ic_home_icon.xml" value="0.1" />
         <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/activity_login.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/activity_sign_up.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/fragment_activity.xml" value="0.25" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/fragment_home_feed.xml" value="0.25" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/layout/fragment_search.xml" value="0.22" />
+        <entry key="..\:/Users/aayom/OneDrive/Documents/GitHub/apppx/app/src/main/res/menu/menu_bottom_nav.xml" value="0.1" />
       </map>
     </option>
   </component>

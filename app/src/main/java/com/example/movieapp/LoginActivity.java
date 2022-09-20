@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 String userName = etUserName.getText().toString();
                 String password = etUserName.getText().toString();
                 goMainActivity();
-//                LoginUser(userName, password);
+                LoginUser(userName, password);
             }
         });
 

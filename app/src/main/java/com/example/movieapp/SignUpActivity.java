@@ -14,7 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.movieapp.Models.User;
 import com.google.android.material.textfield.TextInputLayout;
+import com.parse.ParseException;
+import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText firstName;
@@ -73,25 +77,23 @@ public class SignUpActivity extends AppCompatActivity {
                     layout_ConfirmPasswordSignUp.setError("password do not match");
                 }
                 else {
-//                    User user = new User();
-//                    user.setFirstName(String.valueOf(firstName.getText()));
-//                    user.setLastName(String.valueOf(lastName.getText()));
-//                    user.setEmail(String.valueOf(email.getText()));
-//                    user.setUsername(String.valueOf(etUserNameSignUp.getText()));
-//                    user.setPassword(String.valueOf(etPasswordSignUp.getText()));
-//                    user.setStatusCount(0);
-//                    user.setStatus("Noobie");
-//                    user.signUpInBackground(new SignUpCallback() {
-//                        @Override
-//                        public void done(ParseException e) {
-//                            if (e != null) {
-//                                Log.i(TAG, "Error!", e);
-//                                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                goToMainActivity();
-//                            }
-//                        }
-//                    });
+                    User user = new User();
+                    user.setFirstName(String.valueOf(firstName.getText()));
+                    user.setLastName(String.valueOf(lastName.getText()));
+                    user.setEmail(String.valueOf(email.getText()));
+                    user.setUsername(String.valueOf(etUserNameSignUp.getText()));
+                    user.setPassword(String.valueOf(etPasswordSignUp.getText()));
+                    user.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Log.i(TAG, "Error!", e);
+                                Toast.makeText(SignUpActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                goToMainActivity();
+                            }
+                        }
+                    });
                 }
             }
         });

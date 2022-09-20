@@ -3,6 +3,8 @@ package com.example.movieapp;
 import android.app.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.movieapp.Models.User;
 import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
@@ -14,6 +16,7 @@ public class ParseActivation extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        ParseObject.registerSubclass(User.class);
 //        Register your parse model
 
         Parse.initialize(new Parse.Configuration.Builder(this)
