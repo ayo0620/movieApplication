@@ -3,14 +3,11 @@ package com.example.movieapp.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Movie;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import org.parceler.Parcel;
-import org.parceler.Parcels;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,14 +20,15 @@ import com.example.movieapp.Models.Movies;
 import com.example.movieapp.MovieDetailActivity;
 import com.example.movieapp.R;
 
+import org.parceler.Parcels;
 
 import java.util.List;
 
-public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.ViewHolder>{
+public class SimilarMoviesAdapter extends RecyclerView.Adapter<SimilarMoviesAdapter.ViewHolder>{
     Context context;
     List<Movies> movies;
 
-    public MovieSearchAdapter(Context context, List<Movies>movies) {
+    public SimilarMoviesAdapter(Context context, List<Movies>movies) {
         this.context = context;
         this.movies = movies;
     }
@@ -38,12 +36,9 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("MovieAdapter","onCreateViewHolder");
-        View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie_card, parent,false);
+        View movieView = LayoutInflater.from(context).inflate(R.layout.item_similar_movie, parent,false);
         return new ViewHolder(movieView);
     }
-
-
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -59,10 +54,8 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        private TextView tvTitle;
-        private TextView tvOverview;
-        private ImageView ivMovieImg;
-        private TextView tvMovieRestriction;
+        private ImageView ivSimilarMovieImage;
+        private TextView tvSimilarMovieName;
 
         @Override
         public void onClick(View v) {
@@ -79,20 +72,16 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.movieTitle);
-            tvOverview = itemView.findViewById(R.id.tvShortMovieDesc);
-            ivMovieImg = itemView.findViewById(R.id.ivMovieImage);
-            tvMovieRestriction = itemView.findViewById(R.id.tvMovieYear);
+            ivSimilarMovieImage= itemView.findViewById(R.id.ivSimilarMovieImage);
+            tvSimilarMovieName = itemView.findViewById(R.id.tvSimilarMovieName);
             itemView.setOnClickListener(this);
         }
 
 
         public void bind(Movies movie)
         {
-            tvTitle.setText(movie.getMovieName());
-            tvOverview.setText(movie.getMovieDescription());
-            String date = movie.getMovieYear();
-            tvMovieRestriction.setText(date.substring(0,4));
+            tvSimilarMovieName.setText(movie.getMovieName());
+
             String imageUrl;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             {
@@ -103,7 +92,7 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
             }
             int radius = 20;
 
-            Glide.with(context).load(imageUrl).fitCenter().transform(new RoundedCorners(radius)).placeholder(R.drawable.placeholder).into(ivMovieImg);
+            Glide.with(context).load(imageUrl).fitCenter().transform(new RoundedCorners(radius)).placeholder(R.drawable.placeholder).into(ivSimilarMovieImage);
         }
     }
 
