@@ -65,6 +65,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         rvSimilarMovies = findViewById(R.id.rvSimilarMovies);
         btnWatchContent = findViewById(R.id.btnWatchTrailer);
 
+
         movies = Parcels.unwrap(getIntent().getParcelableExtra(Movies.class.getSimpleName()));
 
         MovieDetailClose.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         similarMovieList = new ArrayList<>();
 
@@ -167,7 +169,6 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void getMovieDetailQuery(String movieID) {
-
         AsyncHttpClient client = new AsyncHttpClient();
         String MOVIE_Detail_URL = "https://api.themoviedb.org/3/movie/"+movieID+"?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
         client.get(MOVIE_Detail_URL, new JsonHttpResponseHandler() {

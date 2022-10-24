@@ -7,7 +7,6 @@
 
     <string-array name="names">
         <item>popular</item>
-        <item>Latest</item>
         <item>Top Rated</item>
         <item>Now playing</item>
     </string-array>
