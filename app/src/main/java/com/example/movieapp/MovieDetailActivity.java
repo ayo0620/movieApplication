@@ -114,8 +114,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private void getMovieTrailer(String movieID) {
         AsyncHttpClient client = new AsyncHttpClient();
-        String SEARCH_MOVIE_URL = "https://api.themoviedb.org/3/movie/"+movieID+"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
-        client.get(SEARCH_MOVIE_URL, new JsonHttpResponseHandler() {
+        String YT_MOVIE_URL = "https://api.themoviedb.org/3/movie/"+movieID+"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
+        client.get(YT_MOVIE_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 Log.d(TAG, "onSuccess");

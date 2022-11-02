@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -23,6 +24,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.movieapp.Adapters.CardsAdapter;
 import com.example.movieapp.Models.Movies;
 import com.example.movieapp.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -205,7 +207,20 @@ public class CategoryFragment extends Fragment {
             }
         });
 
-//        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_play_Trailer:
+                adapter.playTrailer(item.getGroupId(), getActivity());
+                return true;
+            case R.id.action_recommend:
+                adapter.addToRecommendations(item.getGroupId(), getActivity());
+                Snackbar.make(getView().findViewById(R.id.rlCategory),"Added to your Recommendation list",Snackbar.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 
 

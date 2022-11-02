@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_play_Trailer"
+        android:orderInCategory="100"
+        android:title="Play Trailer"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_recommend"
+        android:orderInCategory="100"
+        android:title="Recommend movies like this"
+        app:showAsAction="never"/>
+</menu>
