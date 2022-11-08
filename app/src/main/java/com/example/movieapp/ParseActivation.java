@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.movieapp.Models.Library;
 import com.example.movieapp.Models.Recommendations;
 import com.example.movieapp.Models.User;
 import com.parse.Parse;
@@ -19,6 +20,7 @@ public class ParseActivation extends Application {
         super.onCreate();
         ParseObject.registerSubclass(User.class);
         ParseObject.registerSubclass(Recommendations.class);
+        ParseObject.registerSubclass(Library.class);
 //        Register your parse model
 
         Parse.initialize(new Parse.Configuration.Builder(this)

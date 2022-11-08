@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.example.movieapp.Models.Library;
 import com.example.movieapp.Models.Movies;
 import com.example.movieapp.Models.Recommendations;
 import com.example.movieapp.MovieDetailActivity;
@@ -46,6 +47,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
     private Context context;
     private  List<Movies> allCards;
     private Boolean isAddToRecommendation;
+    private Boolean isAddToLib;
 
     public CardsAdapter(Context context, List<Movies>cards) {
         this.context = context;
@@ -105,7 +107,8 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             menu.add(this.getAdapterPosition(), R.id.action_play_Trailer,0,"Play Trailer");
-            menu.add(this.getAdapterPosition(), R.id.action_recommend,1,"Recommendation more like this");
+            menu.add(this.getAdapterPosition(), R.id.action_addToLibrary,1,"Add to Library");
+            menu.add(this.getAdapterPosition(), R.id.action_recommend,2,"Recommendation more like this");
         }
 
     }
@@ -149,6 +152,47 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
 
     }
+
+    public void addToLibrary(int position, FragmentActivity view)
+    {
+        isAddToLib = true;
+        Movies card = allCards.get(position);
+        ParseQuery<Library>libraryParseQuery = ParseQuery.getQuery(Library.class);
+        libraryParseQuery.whereContains("forUser",ParseUser.getCurrentUser().getObjectId());
+        libraryParseQuery.findInBackground(new FindCallback<Library>() {
+            @Override
+            public void done(List<Library> objects, ParseException e) {
+                for (Library lib: objects)
+                {
+                    if (lib.getMovieName().equals(card.getMovieName()))
+                    {
+                        isAddToLib = false;
+                        Snackbar.make(view.findViewById(R.id.rlCategory),"Already added",Snackbar.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
+                if(isAddToLib.equals(true))
+                {
+                    Library library = new Library();
+                    library.setMovieName(card.getMovieName());
+                    library.setMovieImage(card.getMovieImage());
+                    library.setForUser(ParseUser.getCurrentUser());
+                    library.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if(e!= null)
+                            {
+                                Log.i("Library", "issue with saving library object",e);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+
+    }
+
 
     public void playTrailer(int position, FragmentActivity view) {
         isAddToRecommendation = true;

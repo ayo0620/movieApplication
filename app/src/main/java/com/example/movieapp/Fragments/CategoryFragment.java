@@ -215,6 +215,10 @@ public class CategoryFragment extends Fragment {
             case R.id.action_play_Trailer:
                 adapter.playTrailer(item.getGroupId(), getActivity());
                 return true;
+            case R.id.action_addToLibrary:
+                adapter.addToLibrary(item.getGroupId(), getActivity());
+                Snackbar.make(getView().findViewById(R.id.rlCategory),"Added to Library",Snackbar.LENGTH_SHORT).show();
+                return true;
             case R.id.action_recommend:
                 adapter.addToRecommendations(item.getGroupId(), getActivity());
                 Snackbar.make(getView().findViewById(R.id.rlCategory),"Added to your Recommendation list",Snackbar.LENGTH_SHORT).show();

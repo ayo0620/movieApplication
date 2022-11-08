@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.movieapp.Fragments.ActivityFragment;
+import com.example.movieapp.Fragments.LibraryFragment;
 import com.example.movieapp.Fragments.HomeFeedFragment;
 import com.example.movieapp.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     HomeFeedFragment homeFeedFragment = new HomeFeedFragment();
     SearchFragment searchFragment = new SearchFragment();
-    ActivityFragment activityFragment = new ActivityFragment();
+    LibraryFragment activityFragment = new LibraryFragment();
 
 
     @Override

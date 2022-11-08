@@ -17,6 +17,6 @@
     <item
         android:id="@+id/action_explore"
         android:icon="@drawable/ic_explore_icon"
-        android:title="Activity"
+        android:title="Library"
         app:showAsAction="always" />
 </menu>
