@@ -44,7 +44,6 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private ImageView ivMovieImage;
         private TextView tvMovieName;
 
@@ -61,7 +60,6 @@ public class LibraryAdapter extends RecyclerView.Adapter<LibraryAdapter.ViewHold
             img = String.format("https://image.tmdb.org/t/p/w342/%s",img);
             Glide.with(context).load(img).into(ivMovieImage);
         }
-
     }
 
     public void removeItem(int position)

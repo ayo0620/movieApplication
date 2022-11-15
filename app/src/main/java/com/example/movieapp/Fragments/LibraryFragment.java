@@ -72,7 +72,7 @@ public class LibraryFragment extends Fragment {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 Library deletedCourse = allItems.get(viewHolder.getAdapterPosition());
                 int position = viewHolder.getAdapterPosition();
-//                adapter.removeItem(position);
+
                 allItems.remove(position);
                 adapter.notifyItemRemoved(position);
                 ParseQuery<Library> query = ParseQuery.getQuery(Library.class);
@@ -99,7 +99,6 @@ public class LibraryFragment extends Fragment {
                         Log.i("snackbar", String.valueOf(position));
                         allItems.add(position, deletedCourse);
                         adapter.notifyItemInserted(position);
-//                        adapter.addItem(position, deletedCourse);
                     }
                 }).show();
             }

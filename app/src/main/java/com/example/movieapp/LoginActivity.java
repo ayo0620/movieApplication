@@ -14,8 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.movieapp.Models.User;
+import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -47,8 +50,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String userName = etUserName.getText().toString();
-                String password = etUserName.getText().toString();
-                goMainActivity();
+                String password = etPassword.getText().toString();
+                if (userName.isEmpty()){
+                    etUserName.setError("Username cannot be blank");
+                }
+                if (password.isEmpty())
+                    etPassword.setError("Password cannot be blank");
                 LoginUser(userName, password);
             }
         });
@@ -63,19 +70,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void LoginUser(String userName, String password) {
-        ParseUser.logInInBackground(userName, password, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if(e!= null)
-                {
-                    Toast.makeText(LoginActivity.this, "Username or password is incorrect",Toast.LENGTH_SHORT).show();
+        if(!userName.isEmpty() && !password.isEmpty())
+        {
+            ParseUser.logInInBackground(userName, password, new LogInCallback() {
+                @Override
+                public void done(ParseUser user, ParseException e) {
+                    if(user!= null)
+                    {
+                        Toast.makeText(LoginActivity.this, "login successfully",Toast.LENGTH_SHORT).show();
+                        goMainActivity();
+                    }
+                    else
+                    {
+                        Toast.makeText(LoginActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else
-                {
-                    goMainActivity();
-                }
-            }
-        });
+            });
+        }
+
     }
 
     private void goMainActivity() {
